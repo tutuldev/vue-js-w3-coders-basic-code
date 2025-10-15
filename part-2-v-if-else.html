@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue js part-2</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+<body>
+    <div id="app">
+    <h1>{{ message }}</h1>
+    <h2 v-if="seen">Now you see me</h2>
+    <h2 v-else-if="seen2">Now you see me 2</h2>
+    <h2 v-else>Now you don't see me 3</h2>
+    <button @click="changeMessage">Change Message</button>
+    </div>
+
+
+    <script>
+        // Create Vue App
+        const myapplication = Vue.createApp({
+        data() {
+            return {
+            seen:true,
+            seen2:false,
+            message: 'Hello World from Vue 3!'
+            }
+        },
+        methods: {
+            changeMessage() {
+            this.message = 'You clicked the button!'
+            }
+        }
+        }).mount('#app')
+    </script>
+</body>
+</html>
