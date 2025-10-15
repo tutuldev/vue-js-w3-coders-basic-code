@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 3 v-for Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ message }}</h1>
+
+    <ul>
+      <li v-for="data1 in array1" :key="data1">{{ data1 }}</li>
+    </ul>
+    <ul>
+      <li v-for="data2 in array2" :key="data2.text">{{ data2.title }} --{{data2.text}}</li>
+    </ul>
+
+    <button @click="changeMessage">Change Message</button>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const myapplication = Vue.createApp({
+      data() {
+        return {
+          message: 'Hello World from Vue 3!',
+          array1: ['item 1', 'item 2', 'item 3'],
+          array2:[
+            {text:'js',title:'javascript'},
+            {text:'py',title:'python'},
+            {text:'rb',title:'ruby'},
+            {text:'php',title:'php'}
+          ]
+        }
+      },
+      methods: {
+        changeMessage() {
+          this.message = 'You clicked the button!'
+        }
+      }
+    })
+
+    myapplication.mount('#app')
+  </script>
+</body>
+</html>
