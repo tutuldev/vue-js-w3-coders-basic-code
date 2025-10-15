@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue js part-4 method</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+<body>
+    <div id="app">
+    <h1>{{ message }}</h1>
+    <h1>{{ testFun() }}</h1> //ekhane () bracket deyai lagbe
+    <button @click="changeMessage">Change Message</button> //ekhane method er name er sathe () bracket deyai lagbe na karon ekhane method ke call kora hocche na sudhu event er sathe bind kora hocche
+    </div>
+
+
+    <script>
+        // Create Vue App
+        const myapplication = Vue.createApp({
+        data() {
+            return {
+            message: 'Hello World from Vue 3!'
+            }
+        },
+        methods: {
+            changeMessage() {
+            this.message = 'You clicked the button!'
+            },
+            testFun(){
+                return "This is test function"
+            }
+        }
+        }).mount('#app')
+    </script>
+</body>
+</html>
