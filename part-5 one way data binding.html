@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue js part-5 one way data binding</title>
+</head>
+<body>
+    <style>
+        .active{
+            color:green;
+        }
+        .error{
+            background-color:red;
+        }
+    </style>
+
+
+    <div id="app">
+    <h1>{{ message }}</h1>
+    <!-- not valid in vue js -->
+    <a href="{{url}}" target="_blank">Click Me</a><br> 
+    <!-- not valid in vue js -->
+    <a href="url" target="_blank">Click Me</a><br>
+    <!-- valid in vue js -->
+    <a v-bind:href="url" target="_blank">Click Me</a><br>
+    <!-- also valid in vue js -->
+    <a :href="url" target="_blank">Click Me</a><br>
+    <button @click="changeMessage">Change Message</button>
+
+    <!-- <div class="{active:is_active}">Title</div> eta kaj korbe na  -->
+     <!-- <div :class="{active:is_active}">Title</div> eta kaj korbe   -->
+     <div :class="{active:is_active, error:hasError}">Title</div> <!--2 tai kaj korbeeta kaj korbe -->  
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        // Create Vue App
+        const myapplication = Vue.createApp({
+        data() {
+            return {
+            message: 'Hello World from Vue 3!',
+            url:'https://www.facebook.com',
+            is_active:true,
+            hasError:true
+
+            }
+        },
+        methods: {
+            changeMessage() {
+            this.message = 'You clicked the button!'
+            }
+        }
+        }).mount('#app')
+    </script>
+</body>
+</html>
