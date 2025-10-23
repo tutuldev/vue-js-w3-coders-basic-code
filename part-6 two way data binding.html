@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue js part-6 two way data binding</title>
+</head>
+<body>
+    <div id="app">
+    <h1>{{ message }}</h1>
+    <input type="text" v-model="name">
+    <br>    
+    <h2>Your name is: {{ name }}</h2>
+    <br>
+    <input type="checkbox" name="" id="" v-model="status">
+    <br>
+    <small>Status Is:{{status}}</small>
+
+    <br>
+    <br>
+    <br>
+    <br>
+      <input type="checkbox" value="Sojib" v-model="names">Sojib
+      <input type="checkbox" value="Rana" v-model="names">Rana
+      <input type="checkbox" value="Hasan" v-model="names">Hasan
+      <input type="checkbox" value="Tuhin" v-model="names">Tuhin
+      <input type="checkbox" value="Rakib" v-model="names">Rakib
+      <input type="checkbox" value="Ovi" v-model="names">Ovi
+    <br>
+    <!-- ekhane arry er moddekhe show korbe -->
+    <small>A list of names:{{names}}</small>
+    <br>
+    <br>
+    <!-- ekane ar arry er moddekhe show korbe na just comma diye alada korbe -->
+    <small>A list of names:{{names.join(',')}}</small>
+    <br>
+
+
+    <hr>
+      <input type="radio" value="nice" v-model="feeling">nice
+      <input type="radio" value="great" v-model="feeling">great
+      <input type="radio" value="good" v-model="feeling">good
+
+    <br>
+    <small>Feeling is:{{feeling}}</small>
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <button @click="changeMessage">Change Message</button>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        // Create Vue App
+        const myapplication = Vue.createApp({
+        data() {
+            return {
+            message: 'Hello World from Vue 3!',
+            name:'tutul',
+            status:false,
+            names:[],
+            feeling:null
+            }
+        },
+        methods: {
+            changeMessage() {
+            this.message = 'You clicked the button!'
+            }
+        }
+        }).mount('#app')
+    </script>
+</body>
+</html>
