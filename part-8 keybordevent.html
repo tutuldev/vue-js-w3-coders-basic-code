@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue js part-8 keybord event</title>
+</head>
+<body>
+    <div id="app">
+    <h1>{{ message }}</h1>
+
+    <!-- <input type="text" @keyup="myEvent"> //count ar ki type korci ta show kora jai -->
+
+
+
+    <!-- //ja type korbo ta show korble but ager ta "ap" likhle a show korbe ar apo likhle ap show korbe -->
+    <!-- <input type="text" @keypress="myEvent"> -->
+
+    <!-- <input type="text" @keypress.enter="myEvent"> -->
+     <!-- enter key press korlei show korbe -->
+
+
+        <input type="text" @keyup.enter="myEvent">
+        <!-- inter click korlei show korbe -->
+
+
+
+
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <button @click="changeMessage">Change Message</button>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        // Create Vue App
+        const myapplication = Vue.createApp({
+        data() {
+            return {
+            message: 'Hello World from Vue 3!'
+            }
+        },
+        methods: {
+            changeMessage() {
+            this.message = 'You clicked the button!'
+            },
+            // myEvent(){
+            //     console.log('typing...'); //typing... show korble shate koita key press koreci tar count o show korble
+                
+            //     }
+            myEvent(event){
+                console.log(event.target.value); //ja likhbo ta show korble colsole 
+                    }
+                }
+        }).mount('#app')
+    </script>
+</body>
+</html>
