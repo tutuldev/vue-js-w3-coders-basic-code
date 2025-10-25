@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue js part-7 events</title>
+</head>
+<body>
+    <div id="app">
+    <h1>{{ message }}</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <button v-on:click="count +=1">+</button> <br>
+    <small>you clicked {{count}} times</small>
+    <hr>
+
+    <button v-on:click="total(1)">+</button> <br>
+    <button v-on:click="total(-1)">-</button> <br>
+    <small>you clicked {{totalval}} times</small>
+    <hr>
+
+    <button @click="good" >Good alert button</button>
+    <hr>
+    <button v-on:click="say('hi')">say hi</button> <br>
+    <button @click="say('hellow')">say hellow</button> <br>
+
+    <!-- //@click is shorthand of v-on:click -->
+
+
+
+    <br>
+    <button @click="changeMessage">Change Message</button>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        // Create Vue App
+        const myapplication = Vue.createApp({
+        data() {
+            return {
+            message: 'Hello World from Vue 3!',
+            count:0,
+            totalval:0
+            }
+        },
+        methods: {
+            changeMessage() {
+            this.message = 'You clicked the button!'
+            },
+            total(val){ 
+                this.totalval +=val;
+            },
+            // good(){
+            //     alert('Rana '+this.message); 
+            //      }
+
+            good(event){
+                alert('Rana '+this.message)
+               
+
+            if(event){
+                // console.log(event); //event object checking how many properties are there
+                // console.log(event.target); // which element triggered the event 
+                console.log(event.target.tagName); // show tag name of the element
+            }
+        },
+            say(msg){
+                alert(msg);
+            }
+    },
+        }).mount('#app')
+    </script>
+</body>
+</html>
