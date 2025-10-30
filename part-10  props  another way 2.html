@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue 3 Component, Props, Data & Methods Example</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ title }}</h1>
+    <p>{{ message }}</p>
+
+    <button @click="changeMessage">Change Message</button>
+    <hr>
+
+    <!-- Component ব্যবহার -->
+    <hello-world message="Welcome to Vue!"></hello-world>
+    <hello-world message="Learning Components"></hello-world>
+    <hello-world :message="dynamicText"></hello-world> 
+    <!-- এখানে :message দিয়ে App এর data থেকে ডাইনামিক ডেটা পাঠানো হচ্ছে -->
+  </div>
+
+  <!-- Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script>
+    const { createApp } = Vue;
+
+    // 🔹 Component Define
+    const HelloWorld = {
+      props: ['message'], // parent থেকে ডেটা নিচ্ছে
+      template: `<h2>👉 {{ message }}</h2>`
+    };
+
+    // 🔹 Vue App তৈরি
+    const app = createApp({
+      data() {
+        return {
+          title: 'Vue 3 Component + Props + Data + Methods Demo',
+          message: 'This is coming from the main App!',
+          dynamicText: 'Dynamic text from App data 👋'
+        }
+      },
+      methods: {
+        changeMessage() {
+          this.message = 'You clicked the button! Message changed ✅';
+          this.dynamicText = 'Dynamic text also updated 🔁';
+        }
+      }
+    });
+
+    // 🔹 Component রেজিস্টার
+    app.component('hello-world', HelloWorld);
+
+    // 🔹 App মাউন্ট করা
+    app.mount('#app');
+  </script>
+</body>
+</html>
